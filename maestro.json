@@ -1,0 +1,91 @@
+{
+  "termos": [
+    {
+      "nombre": "SIMAT",
+      "foto": "SIMAT.jpg",
+      "capacidades": [
+        { "litros": 50, "precio": 195 },
+        { "litros": 80, "precio": 240 },
+        { "litros": 100, "precio": 280 }
+      ],
+      "descripcion": "Termo eléctrico SIMAT económico y eficiente, calderín esmaltado con ánodo de magnesio, resistencia sumergida de 1200W. Ideal para viviendas pequeñas y medianas. Instalación realizada por fontanero en Torrevieja."
+    },
+    {
+      "nombre": "PRO R",
+      "foto": "PRO-R.jpg",
+      "capacidades": [
+        { "litros": 50, "precio": 260 },
+        { "litros": 80, "precio": 310 },
+        { "litros": 100, "precio": 360 }
+      ],
+      "descripcion": "Termo eléctrico Ariston PRO R con resistencia blindada para durabilidad, tecnología WaterPlus para hasta 16% más de agua caliente disponible, calderín esmaltado con titanio, instalación por fontanero en Torrevieja."
+    },
+    {
+      "nombre": "LYDOS ECO",
+      "foto": "LYDOS-ECO.jpg",
+      "capacidades": [
+        { "litros": 50, "precio": 280 },
+        { "litros": 80, "precio": 330 },
+        { "litros": 100, "precio": 380 }
+      ],
+      "descripcion": "Termo eléctrico Ariston LYDOS ECO con resistencia blindada, tecnología WaterPlus para hasta 16% más de agua caliente, función ECO EVO para ahorro inteligente, calderín con titanio vitrificado, instalación por fontanero en Torrevieja."
+    },
+    {
+      "nombre": "LYDOS ECO Wi-Fi",
+      "foto": "LYDOS-ECO-WIFI.jpg",
+      "capacidades": [
+        { "litros": 50, "precio": 330 },
+        { "litros": 80, "precio": 380 },
+        { "litros": 100, "precio": 430 }
+      ],
+      "descripcion": "Termo eléctrico Ariston LYDOS ECO Wi-Fi con resistencia blindada, conectividad Wi-Fi, función ECO EVO, función T-Max, tecnología WaterPlus, calderín titanio vitrificado, instalación por fontanero en Torrevieja."
+    },
+    {
+      "nombre": "VELIS PRO Wi-Fi",
+      "foto": "VELIS-PRO-WIFI.jpg",
+      "capacidades": [
+        { "litros": 50, "precio": 420 },
+        { "litros": 80, "precio": 480 },
+        { "litros": 100, "precio": 540 }
+      ],
+      "descripcion": "Termo eléctrico Ariston VELIS PRO Wi-Fi con diseño plano, doble acumulador, resistencias alternas, conectividad Wi-Fi, función ECO EVO, Shower Ready, calderín con titanio, instalación por fontanero en Torrevieja."
+    },
+    {
+      "nombre": "MULTIDRIVE",
+      "foto": "MULTIDRIVE.jpg",
+      "capacidades": [
+        { "litros": 50, "precio": 370 },
+        { "litros": 80, "precio": 430 },
+        { "litros": 100, "precio": 490 }
+      ],
+      "descripcion": "Termo eléctrico Ariston PRO1 ECO Drive Multis con doble resistencia envainada, calderín protegido contra la cal, función ECO EVO, instalación por fontanero en Torrevieja."
+    },
+    {
+      "nombre": "HÍBRIDO Wi-Fi",
+      "foto": "HIBRIDO-WIFI.jpg",
+      "capacidades": [
+        { "litros": 80, "precio": 840 },
+        { "litros": 100, "precio": 950 }
+      ],
+      "descripcion": "Termo híbrido Wi-Fi con resistencia eléctrica de 1200W y aerotermia, modos i-Memory, Boost y Green, ahorro hasta 50%, instalación por fontanero en Torrevieja."
+    },
+    {
+      "nombre": "NUOS EVO A+",
+      "foto": "NUOS-EVO.jpg",
+      "capacidades": [
+        { "litros": 110, "precio": 1490 }
+      ],
+      "descripcion": "Termo NUOS EVO A+ con resistencia eléctrica y bomba de calor, modos inteligentes i-Memory y Green, máxima eficiencia Clase A, instalación por fontanero en Torrevieja."
+    },
+    {
+      "nombre": "VELIS Wi-Fi",
+      "foto": "VELIS-PRO-WIFI.jpg",
+      "capacidades": [
+        { "litros": 50, "precio": 420 },
+        { "litros": 80, "precio": 480 },
+        { "litros": 100, "precio": 540 }
+      ],
+      "descripcion": "Termo eléctrico Ariston Velis Wi-Fi con diseño plano, doble acumulador, resistencias alternas, conectividad Wi-Fi, función ECO EVO, Shower Ready, calderín con titanio, instalación por fontanero en Torrevieja."
+    }
+  ]
+}

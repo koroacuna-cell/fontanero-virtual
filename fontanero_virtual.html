@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fontanero Virtual Eduardo Quirós</title>
+<style>
+body { font-family: Arial, sans-serif; background: #f2f2f2; margin:0; padding:0; display:flex; flex-direction:column; align-items:center;}
+.container { max-width: 480px; width: 100%; margin:20px; background:#fff; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2); padding:15px;}
+h1 { text-align:center; color:#007BFF; }
+.chat { display:flex; flex-direction:column; gap:10px; margin-top:15px;}
+.message { padding:10px 15px; border-radius:20px; max-width:80%; }
+.user { background:#DCF8C6; align-self:flex-end; }
+.bot { background:#E6E6E6; align-self:flex-start; }
+input[type=text]{ width:100%; padding:10px; border-radius:20px; border:1px solid #ccc; margin-top:10px;}
+button { padding:10px 20px; border:none; border-radius:20px; background:#007BFF; color:#fff; cursor:pointer; margin-top:5px; }
+button:active { background:#0056b3; }
+.actions { display:flex; justify-content:space-between; margin-top:10px;}
+.actions a { text-decoration:none; padding:10px 20px; border-radius:20px; color:#fff; background:#25D366; }
+.actions a.call { background:#34b7f1; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Haz tu pregunta al Fontanero Virtual Eduardo Quirós</h1>
+<div class="chat" id="chat"></div>
+<input type="text" id="userInput" placeholder="Escribe tu consulta...">
+<button onclick="sendMessage()">Enviar</button>
+<div class="actions">
+<a href="https://wa.me/34603398960" target="_blank">WhatsApp</a>
+<a href="tel:+34603398960" class="call">Llamar</a>
+</div>
+</div>
+
+<script>
+const chat = document.getElementById('chat');
+const responses = {
+  "termo roto":"No he encontrado esa información. Envíame una foto por WhatsApp para ayudarte mejor.",
+  "grifo pierde agua":"Cierra la llave de paso inmediatamente y envíame una foto por WhatsApp para valorar reparación.",
+  "termo electrico":"No he encontrado esa información. Envíame una foto por WhatsApp para ayudarte mejor.",
+  "precio termo":"Puedes ver modelos y precios aquí: <a href='https://fontaneriaeduardoquiroz.webador.es/' target='_blank'>Fontanería Eduardo Quirós</a>"
+};
+
+function sendMessage(){
+  const input = document.getElementById('userInput');
+  const text = input.value.trim();
+  if(text==="") return;
+  
+  const userMsg = document.createElement('div');
+  userMsg.classList.add('message','user');
+  userMsg.innerText = text;
+  chat.appendChild(userMsg);
+  
+  let botReply = responses[text.toLowerCase()] || "No he entendido bien la consulta.\nEnvíame una foto por WhatsApp y te ayudo inmediatamente.";
+  
+  const botMsg = document.createElement('div');
+  botMsg.classList.add('message','bot');
+  botMsg.innerHTML = botReply;
+  chat.appendChild(botMsg);
+  
+  input.value='';
+  chat.scrollTop = chat.scrollHeight;
+}
+</script>
+</body>
+</html>

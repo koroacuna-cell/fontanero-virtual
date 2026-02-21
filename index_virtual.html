@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fontanería Eduardo Quirós - Fontanero Virtual</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+h1 { color: #004080; }
+.producto { border: 1px solid #ccc; padding: 10px; margin: 10px 0; background: #fff; border-radius: 5px; }
+.producto img { max-width: 150px; display: block; margin-bottom: 10px; }
+.botones { margin-top: 10px; }
+.botones a { margin-right: 10px; text-decoration: none; color: #fff; background: #25D366; padding: 5px 10px; border-radius: 5px; }
+.selector-idioma { margin-bottom: 20px; }
+</style>
+</head>
+<body>
+<h1>Fontanero Virtual - Fontanería Eduardo Quirós</h1>
+
+<div class="selector-idioma">
+<label for="idioma">Idioma:</label>
+<select id="idioma">
+  <option value="es">Español</option>
+  <option value="en">English</option>
+</select>
+</div>
+
+<div id="productos"></div>
+
+<script>
+const productosJSON = 'json_maestro/maestro.json';
+let idioma = 'es';
+
+document.getElementById('idioma').addEventListener('change', e => {
+    idioma = e.target.value;
+    cargarCatalogo();
+});
+
+async function cargarCatalogo() {
+    const response = await fetch(productosJSON);
+    const catalogo = await response.json();
+    const contenedor = document.getElementById('productos');
+    contenedor.innerHTML = '';
+
+    catalogo.forEach(p => {
+        const div = document.createElement('div');
+        div.className = 'producto';
+
+        let capacidadesHTML = '<ul>';
+        p.capacidades.forEach(c => capacidadesHTML += `<li>${c}</li>`);
+        capacidadesHTML += '</ul>';
+
+        // Traducción básica al inglés (puede ampliarse)
+        let descripcion = p.descripcion;
+        if (idioma === 'en') {
+            descripcion = descripcion.replace(/Termo eléctrico/g, 'Electric water heater')
+                                     .replace(/con resistencia blindada/g, 'with protected heating element')
+                                     .replace(/Instalación.*?Torrevieja/g, 'Installed by plumber in Torrevieja')
+                                     .replace(/uso: 1-2 personas/g, 'for 1-2 people');
+        }
+
+        div.innerHTML = `<h2>${p.modelo}</h2>
+                         <img src="fontaneria-fotos/galeria/img/termos/${p.imagen}" alt="${p.modelo}">
+                         <p>${descripcion}</p>
+                         <p>Clasificación energética: ${p.clasificacion_energetica}</p>
+                         ${capacidadesHTML}
+                         <div class="botones">
+                           <a href="${p.botones.whatsapp}" target="_blank">WhatsApp</a>
+                           <a href="tel:${p.botones.llamar}">Llamar</a>
+                         </div>`;
+        contenedor.appendChild(div);
+    });
+}
+
+cargarCatalogo();
+</script>
+</body>
+</html>
