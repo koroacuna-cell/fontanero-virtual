@@ -33,8 +33,14 @@ body {
     border-radius:20px;
     max-width:80%;
 }
-.user { background:#dcf8c6; align-self:flex-end; }
-.bot { background:#ececec; align-self:flex-start; }
+.user {
+    background:#dcf8c6;
+    align-self:flex-end;
+}
+.bot {
+    background:#ececec;
+    align-self:flex-start;
+}
 #input-container {
     display:flex;
     margin-top:5px;
@@ -45,61 +51,65 @@ body {
     border-radius:20px;
     border:1px solid #ccc;
 }
-.action-buttons {
-    display:flex;
-    justify-content:space-around;
-    margin-top:10px;
-}
-.action-buttons a {
-    padding:10px 20px;
+button {
+    padding:10px 15px;
+    border:none;
     border-radius:20px;
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    text-align:center;
-    flex:1;
-    margin:0 5px;
+    margin-left:5px;
+    cursor:pointer;
 }
-.action-buttons a.whatsapp { background:#25D366; }
-.action-buttons a.call { background:#34B7F1; }
+#send { background:#34b7f1; color:#fff; }
+#whatsapp { background:#25d366; color:#fff; }
+#call { background:#007bff; color:#fff; }
 </style>
 </head>
 <body>
 <div id="chat-container">
-    <div id="messages">
-        <div class="bot">Hola, soy el Fontanero Virtual Eduardo Quiroz.<br>Hi, I am the Virtual Plumber Eduardo Quiroz.</div>
-    </div>
+    <div id="messages"></div>
     <div id="input-container">
         <input type="text" id="input" placeholder="Escribe tu consulta... / Type your query...">
         <button id="send">Enviar / Send</button>
-    </div>
-    <div class="action-buttons">
-        <a class="whatsapp" href="https://wa.me/34603398960" target="_blank">WhatsApp</a>
-        <a class="call" href="tel:+34603398960">Llamar / Call</a>
+        <button id="whatsapp" onclick="window.open('https://wa.me/34603398960','_blank')">WhatsApp</button>
+        <button id="call" onclick="window.location.href='tel:+34603398960'">Llamar / Call</button>
     </div>
 </div>
 
 <script>
-// Aquí se vincularán los motores y el backend para procesar preguntas/respuestas
-const input = document.getElementById('input');
+const messagesEl = document.getElementById('messages');
+const inputEl = document.getElementById('input');
 const sendBtn = document.getElementById('send');
-const messages = document.getElementById('messages');
+
+function addMessage(text, cls){
+    const div = document.createElement('div');
+    div.className = 'message ' + cls;
+    div.innerText = text;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+async function enviarPregunta(pregunta){
+    addMessage(pregunta, 'user');
+    try {
+        const response = await fetch('motores/verificar_v3.py?query=' + encodeURIComponent(pregunta));
+        const data = await response.text();
+        addMessage(data || 'No he entendido bien la consulta. Envíame una foto por WhatsApp y te ayudo inmediatamente.\nI didn\'t understand the query. Send me a photo via WhatsApp and I will help you immediately.', 'bot');
+    } catch (e){
+        addMessage('Error al contactar con el motor. Intenta más tarde.', 'bot');
+    }
+}
 
 sendBtn.addEventListener('click', () => {
-    const text = input.value.trim();
-    if (!text) return;
-    const userMsg = document.createElement('div');
-    userMsg.className = 'message user';
-    userMsg.textContent = text;
-    messages.appendChild(userMsg);
+    const q = inputEl.value.trim();
+    if(q) {
+        enviarPregunta(q);
+        inputEl.value = '';
+    }
+});
 
-    const botMsg = document.createElement('div');
-    botMsg.className = 'message bot';
-    botMsg.textContent = "No he entendido bien la consulta. Envíame una foto por WhatsApp y te ayudo inmediatamente.\nI didn't understand the query. Send me a photo via WhatsApp and I will help you immediately.";
-    messages.appendChild(botMsg);
-
-    messages.scrollTop = messages.scrollHeight;
-    input.value = '';
+inputEl.addEventListener('keypress', (e) => {
+    if(e.key === 'Enter'){
+        sendBtn.click();
+    }
 });
 </script>
 </body>
