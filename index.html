@@ -4,94 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fontanero Virtual Eduardo Quiroz</title>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NMPMJP4T');</script>
+<!-- End Google Tag Manager -->
+
 <style>
-body { font-family: Arial; background:#f2f2f2; margin:0; }
-#chat-container { max-width:500px; margin:20px auto; background:#fff; border-radius:10px; padding:10px; display:flex; flex-direction:column; height:80vh;}
-#messages { flex:1; overflow-y:auto; }
-.message { margin:5px 0; padding:8px 12px; border-radius:20px; max-width:80%; }
-.user { background:#dcf8c6; align-self:flex-end; }
-.bot { background:#ececec; align-self:flex-start; }
-#input-container { display:flex; margin-top:5px; }
-#input { flex:1; padding:12px; font-size:16px; border-radius:20px; border:1px solid #ccc; }
-#send-btn { background:#075e54; color:white; border:none; border-radius:20px; padding:0 15px; margin-left:5px; }
-#whatsapp-btn { background:#25d366; color:white; border:none; border-radius:20px; padding:8px; margin-top:5px; }
-#call-btn { background:#007bff; color:white; border:none; border-radius:20px; padding:8px; margin-top:5px; }
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    margin:0;
+    padding:0;
+}
+/* Aquí va el resto de tu CSS existente */
 </style>
 </head>
 <body>
 
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMPMJP4T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <div id="chat-container">
-<div id="messages">
-<div class="message bot">
-Hola, soy el Fontanero Virtual Eduardo Quiroz.<br>
-¿Necesitas un termo eléctrico o tienes una fuga?
+<!-- Aquí va el contenido de tu chat Fontanero Virtual -->
 </div>
-</div>
-
-<div id="input-container">
-<input type="text" id="input" placeholder="Escribe tu consulta...">
-<button id="send-btn">Enviar</button>
-</div>
-
-<button id="whatsapp-btn" onclick="window.open('https://wa.me/34603398960')">WhatsApp</button>
-<button id="call-btn" onclick="window.location.href='tel:+34603398960'">Llamar</button>
-</div>
-
-<script>
-let termosData = [];
-
-fetch('maestro.json')
-.then(res => res.json())
-.then(data => termosData = data.termos)
-.catch(() => console.log("Error cargando JSON"));
-
-function agregarMensaje(texto, clase){
-    const div = document.createElement('div');
-    div.className = 'message ' + clase;
-    div.innerHTML = texto;
-    document.getElementById('messages').appendChild(div);
-    document.getElementById('messages').scrollTop = 99999;
-}
-
-function buscarRespuesta(pregunta){
-    pregunta = pregunta.toLowerCase();
-
-    if(pregunta.includes("termo")){
-        let respuesta = "<b>Catálogo de termos disponibles:</b><br><br>";
-        termosData.forEach(t => {
-            respuesta += "<b>" + t.nombre + "</b><br>";
-            t.capacidades.forEach(c => {
-                respuesta += "- " + c.litros + "L: " + c.precio + "€<br>";
-            });
-            respuesta += "<br>";
-        });
-        return respuesta;
-    }
-
-    if(pregunta.includes("fuga") || pregunta.includes("pierde agua")){
-        return "Las fugas pueden deberse a juntas deterioradas o presión excesiva.<br>Envíame una foto por WhatsApp y te ayudo inmediatamente.";
-    }
-
-    return "No he entendido bien la consulta.<br>Envíame una foto por WhatsApp.";
-}
-
-function enviar(){
-    const input = document.getElementById('input');
-    const texto = input.value.trim();
-    if(!texto) return;
-
-    agregarMensaje(texto, 'user');
-    input.value = '';
-
-    const respuesta = buscarRespuesta(texto);
-    agregarMensaje(respuesta, 'bot');
-}
-
-document.getElementById('send-btn').onclick = enviar;
-document.getElementById('input').addEventListener('keypress', function(e){
-    if(e.key === 'Enter') enviar();
-});
-</script>
 
 </body>
 </html>
