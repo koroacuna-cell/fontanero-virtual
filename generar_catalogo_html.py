@@ -16,7 +16,7 @@ html = """
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Catálogo de Termos - Fontanería Eduardo Quirós</title>
+<title>Catálogo de Termos - Fontanería Eduardo Quiroz</title>
 <style>
 body { font-family: Arial, sans-serif; margin: 20px; background: #f7f7f7; }
 h1 { text-align: center; }
@@ -27,7 +27,7 @@ h1 { text-align: center; }
 </style>
 </head>
 <body>
-<h1>Catálogo de Termos - Fontanería Eduardo Quirós</h1>
+<h1>Catálogo de Termos - Fontanería Eduardo Quiroz</h1>
 <div class="catalogo">
 """
 

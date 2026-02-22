@@ -3,101 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fontanero Virtual Eduardo Quirós</title>
+<title>Fontanero Virtual Eduardo Quiróz</title>
 <style>
-body { font-family: Arial, sans-serif; background: #f2f2f2; margin:0; padding:0; display:flex; flex-direction:column; align-items:center;}
-.container { max-width: 480px; width: 100%; margin:20px; background:#fff; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2); padding:15px;}
-h1 { text-align:center; color:#007BFF; }
-.chat { display:flex; flex-direction:column; gap:10px; margin-top:15px; max-height:60vh; overflow-y:auto;}
-.message { padding:10px 15px; border-radius:20px; max-width:80%; word-wrap: break-word; }
+body { font-family: Arial, sans-serif; background:#f0f0f0; margin:0; padding:0; }
+.container { max-width: 500px; margin: auto; background:#fff; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1); padding:10px; display:flex; flex-direction:column; height:90vh; }
+.chat { flex:1; overflow-y:auto; padding:10px; }
+.message { margin:5px 0; padding:8px 12px; border-radius:20px; max-width:80%; }
 .user { background:#DCF8C6; align-self:flex-end; }
-.bot { background:#E6E6E6; align-self:flex-start; }
-input[type=text]{ width:100%; padding:10px; border-radius:20px; border:1px solid #ccc; margin-top:10px;}
-button { padding:10px 20px; border:none; border-radius:20px; background:#007BFF; color:#fff; cursor:pointer; margin-top:5px; }
-button:active { background:#0056b3; }
-.actions { display:flex; justify-content:space-between; margin-top:10px;}
-.actions a { text-decoration:none; padding:10px 20px; border-radius:20px; color:#fff; }
-.actions a.whatsapp { background:#25D366; }
-.actions a.call { background:#34b7f1; }
-.termo { margin-top:10px; border:1px solid #ccc; border-radius:10px; padding:10px; display:flex; flex-direction:column; align-items:center; background:#f9f9f9; }
-.termo img { max-width:100%; border-radius:10px; margin-bottom:5px; }
-.termo a { color:#007BFF; text-decoration:none; font-weight:bold; margin-top:5px; }
+.bot { background:#eee; align-self:flex-start; }
+.input-area { display:flex; padding:10px; gap:5px; }
+input[type="text"] { flex:1; padding:10px; border-radius:20px; border:1px solid #ccc; }
+button { padding:10px 15px; border:none; border-radius:20px; cursor:pointer; background:#25D366; color:#fff; }
+.button-call { background:#34B7F1; }
+a { color:#25D366; text-decoration:none; }
 </style>
 </head>
 <body>
 <div class="container">
-<h1>Haz tu pregunta al Fontanero Virtual Eduardo Quirós</h1>
-<div class="chat" id="chat"></div>
-<input type="text" id="userInput" placeholder="Escribe tu consulta...">
+<div class="chat" id="chat">
+<div class="bot message">Haz tu pregunta al Fontanero Virtual Eduardo Quiróz / Ask your question to Virtual Plumber Eduardo Quiróz</div>
+</div>
+<div class="input-area">
+<input type="text" id="userInput" placeholder="Escribe tu consulta... / Type your question...">
 <button onclick="sendMessage()">Enviar</button>
-<div class="actions">
-<a href="https://wa.me/34603398960" target="_blank" class="whatsapp">WhatsApp</a>
-<a href="tel:+34603398960" class="call">Llamar</a>
+</div>
+<div style="display:flex; justify-content:space-around; padding:10px;">
+<a class="button-whatsapp" href="https://wa.me/34603398960" target="_blank"><button>WhatsApp</button></a>
+<a class="button-call" href="tel:+34603398960"><button>Llamar</button></a>
 </div>
 </div>
-
 <script>
-// Catálogo completo de termos (JSON maestro)
-const termos = [
-  {name:"SIMAT 50L", price:"195€", size:"50 litros", dimensions:"57,3×45×48 cm", details:"1200W, res envainada sumergida, uso: 1-2 personas", img:"https://example.com/simat50.jpg", link:"https://fontaneriaeduardoquiroz.webador.es/"},
-  {name:"SIMAT 80L", price:"260€", size:"80 litros", dimensions:"75,8×45×48 cm", details:"1200W, res envainada sumergida, uso: familias pequeñas/medianas", img:"https://example.com/simat80.jpg", link:"https://fontaneriaeduardoquiroz.webador.es/"},
-  {name:"SIMAT 100L", price:"320€", size:"100 litros", dimensions:"91,8×45×48 cm", details:"1200W, res envainada sumergida, uso: necesidades más altas", img:"https://example.com/simat100.jpg", link:"https://fontaneriaeduardoquiroz.webador.es/"},
-  {name:"PRO R 50L", price:"260€", size:"50 litros", dimensions:"57,3×45×48 cm", details:"1500W, res blindada, uso: 1-2 personas", img:"https://example.com/pr50.jpg", link:"https://fontaneriaeduardoquiroz.webador.es/"},
-  {name:"PRO R 80L", price:"290€", size:"80 litros", dimensions:"77,8×45×48 cm", details:"1500W, res blindada, uso: familias pequeñas/medianas", img:"https://example.com/pr80.jpg", link:"https://fontaneriaeduardoquiroz.webador.es/"},
-  {name:"PRO R 100L", price:"340€", size:"100 litros", dimensions:"91,8×45×48 cm", details:"1500W, res blindada, uso: familias medianas/grandes", img:"https://example.com/pr100.jpg", link:"https://fontaneriaeduardoquiroz.webador.es/"},
-  {name:"LYDOS ECO 50L", price:"280€", size:"50 litros", dimensions:"57,3×45×48 cm", details:"1500W, res blindada, uso: 1-2 personas", img:"https://example.com/lydos50.jpg", link:"https://fontaneriaeduardoquiroz.webador.es/"},
-  {name:"LYDOS ECO 80L", price:"330€", size:"80 litros", dimensions:"77,8×45×48 cm", details:"1500W, res blindada, uso: familias pequeñas/medianas", img:"https://example.com/lydos80.jpg", link:"https://fontaneriaeduardoquiroz.webador.es/"},
-  {name:"LYDOS ECO 100L", price:"390€", size:"100 litros", dimensions:"91,8×45×48 cm", details:"1500W, res blindada, uso: familias medianas/grandes", img:"https://example.com/lydos100.jpg", link:"https://fontaneriaeduardoquiroz.webador.es/"},
-  // Agregar el resto de termos según JSON maestro...
-];
-
-// Motores híbridos de preguntas
-const motores = [
-  { keywords:["termo roto","mi termo está roto","termo dañado"], reply:"No he encontrado esa información. Envíame una foto por WhatsApp para ayudarte mejor." },
-  { keywords:["grifo pierde agua","fuga grifo","grifo gotea"], reply:"Cierra la llave de paso inmediatamente y envíame una foto por WhatsApp para valorar reparación." },
-  { keywords:["pendiente pvc","tubo pvc pendiente","desagüe pvc"], reply:"La pendiente mínima recomendada para desagües de PVC es 1-2% (1-2 cm por metro)." },
-  { keywords:["instalación termopía","nuevo termopía"], reply:"Para instalar un termopía, envíame fotos por WhatsApp y te doy presupuesto." },
-  { keywords:["fuga termo","termo pierde agua"], reply:"Cierra la llave de paso inmediatamente para evitar daños. Envíame una foto por WhatsApp para valorar reparación urgente." }
-];
-
 const chat = document.getElementById('chat');
 
-function sendMessage(){
+const termos = [
+  {nombre:"SIMAT 50L", precio:"195€", uso:"1-2 personas", detalles:"1200W, resistencia sumergida"},
+  {nombre:"SIMAT 80L", precio:"260€", uso:"familias pequeñas/medianas", detalles:"1200W, resistencia sumergida"},
+  {nombre:"SIMAT 100L", precio:"320€", uso:"familias medianas/grandes", detalles:"1200W, resistencia sumergida"},
+  {nombre:"PRO R 50L", precio:"260€", uso:"1-2 personas", detalles:"1500W, resistencia blindada"},
+  {nombre:"PRO R 80L", precio:"290€", uso:"familias pequeñas/medianas", detalles:"1500W, resistencia blindada"},
+  {nombre:"PRO R 100L", precio:"340€", uso:"familias medianas/grandes", detalles:"1500W, resistencia blindada"},
+  {nombre:"LYDOS ECO 50L", precio:"280€", uso:"1-2 personas", detalles:"1500W, resistencia blindada"},
+  {nombre:"LYDOS ECO 80L", precio:"330€", uso:"familias pequeñas/medianas", detalles:"1500W, resistencia blindada"},
+  {nombre:"LYDOS ECO 100L", precio:"390€", uso:"familias medianas/grandes", detalles:"1500W, resistencia blindada"}
+];
+
+function appendMessage(text, sender) {
+  const div = document.createElement('div');
+  div.className = sender + " message";
+  div.innerHTML = text;
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function sendMessage() {
   const input = document.getElementById('userInput');
   const text = input.value.trim();
-  if(text==="") return;
-
-  const userMsg = document.createElement('div');
-  userMsg.classList.add('message','user');
-  userMsg.innerText = text;
-  chat.appendChild(userMsg);
-
-  // Revisar si menciona algún termo del catálogo
-  let termoFound = termos.filter(t => text.toLowerCase().includes(t.name.toLowerCase()));
-
-  let botMsg = document.createElement('div');
-  botMsg.classList.add('message','bot');
-
-  if(termoFound.length > 0){
-    botMsg.innerHTML = termoFound.map(t => 
-      `<div class="termo"><strong>${t.name}</strong><img src="${t.img}" alt="${t.name}"><span>${t.price}</span><p>${t.details}</p><a href="${t.link}" target="_blank">Ver en Webador</a></div>`
-    ).join('');
+  if(!text) return;
+  appendMessage(text, 'user');
+  input.value = '';
+  
+  // lógica básica de respuestas
+  let respuesta = '';
+  const lowerText = text.toLowerCase();
+  if(lowerText.includes('termo')) {
+    respuesta = 'Puedes ver modelos y precios aquí: <a href="https://fontaneriaeduardoquiroz.webador.es/" target="_blank">Fontanería Eduardo Quiróz</a>';
+  } else if(lowerText.includes('grifo') || lowerText.includes('fuga')) {
+    respuesta = 'Cierra la llave de paso inmediatamente y envíame una foto por WhatsApp para valorar reparación.';
+  } else if(lowerText.includes('urgente')) {
+    respuesta = 'Descríbeme mejor el problema y envíame una foto por WhatsApp.';
   } else {
-    // Buscar en motores híbridos
-    let reply = "No he entendido bien la consulta. Envíame una foto por WhatsApp y te ayudo inmediatamente.";
-    const lowerText = text.toLowerCase();
-    for(const motor of motores){
-      if(motor.keywords.some(k => lowerText.includes(k))){
-        reply = motor.reply;
-        break;
-      }
-    }
-    botMsg.innerHTML = reply + `<p>Puedes ver todos los modelos en <a href="https://fontaneriaeduardoquiroz.webador.es/" target="_blank">Fontanería Eduardo Quirós</a></p>`;
+    respuesta = 'No he encontrado esa información. Envíame una foto por WhatsApp para ayudarte mejor.';
   }
 
-  chat.appendChild(botMsg);
-  input.value='';
-  chat.scrollTop = chat.scrollHeight;
+  appendMessage(respuesta, 'bot');
 }
 </script>
 </body>
