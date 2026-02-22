@@ -4,44 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fontanero Virtual Eduardo Quiroz</title>
+
 <style>
 body {
     font-family: Arial, sans-serif;
-    background: #f2f2f2;
+    background:#f2f2f2;
     margin:0;
-    padding:0;
 }
 #chat-container {
-    max-width: 500px;
-    margin: 20px auto;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    max-width:500px;
+    margin:20px auto;
+    background:#fff;
+    border-radius:10px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.3);
     padding:10px;
     display:flex;
-    flex-direction: column;
-    height: 80vh;
+    flex-direction:column;
+    height:80vh;
 }
 #messages {
     flex:1;
     overflow-y:auto;
-    padding:5px;
 }
 .message {
     margin:5px 0;
     padding:8px 12px;
     border-radius:20px;
     max-width:80%;
-    word-wrap: break-word;
 }
-.user {
-    background:#dcf8c6;
-    align-self:flex-end;
-}
-.bot {
-    background:#ececec;
-    align-self:flex-start;
-}
+.user { background:#dcf8c6; align-self:flex-end; }
+.bot { background:#ececec; align-self:flex-start; }
+
 #input-container {
     display:flex;
     margin-top:5px;
@@ -49,9 +42,9 @@ body {
 #input {
     flex:1;
     padding:12px;
+    font-size:16px;
     border-radius:20px;
     border:1px solid #ccc;
-    font-size:16px;
 }
 #send-btn {
     background:#075e54;
@@ -61,81 +54,93 @@ body {
     padding:0 15px;
     margin-left:5px;
     font-size:16px;
-    cursor:pointer;
 }
 #whatsapp-btn {
     background:#25d366;
     color:white;
     border:none;
     border-radius:20px;
-    padding:8px 12px;
+    padding:8px;
     margin-top:5px;
-    cursor:pointer;
 }
 #call-btn {
     background:#007bff;
     color:white;
     border:none;
     border-radius:20px;
-    padding:8px 12px;
+    padding:8px;
     margin-top:5px;
-    cursor:pointer;
 }
 </style>
 </head>
 <body>
 
 <div id="chat-container">
-    <div id="messages">
-        <div class="bot">Hola, soy el Fontanero Virtual Eduardo Quiroz.<br>Hi, I am the Virtual Plumber Eduardo Quiroz.</div>
-    </div>
-    <div id="input-container">
-        <input type="text" id="input" placeholder="Escribe tu consulta... / Type your query...">
-        <button id="send-btn">Enviar / Send</button>
-    </div>
-    <button id="whatsapp-btn" onclick="window.open('https://wa.me/34603398960')">WhatsApp</button>
-    <button id="call-btn" onclick="window.open('tel:+34603398960')">Llamar / Call</button>
+<div id="messages">
+<div class="message bot">
+Hola, soy el Fontanero Virtual Eduardo Quiroz.<br>
+Hi, I am the Virtual Plumber Eduardo Quiroz.
+</div>
+</div>
+
+<div id="input-container">
+<input type="text" id="input" placeholder="Escribe tu consulta...">
+<button id="send-btn">Enviar</button>
+</div>
+
+<button id="whatsapp-btn" onclick="window.open('https://wa.me/34603398960')">WhatsApp</button>
+<button id="call-btn" onclick="window.location.href='tel:+34603398960'">Llamar</button>
 </div>
 
 <script>
-const input = document.getElementById('input');
-const sendBtn = document.getElementById('send-btn');
-const messages = document.getElementById('messages');
+let maestroData = [];
 
-async function enviarMensaje() {
-    const text = input.value.trim();
-    if(!text) return;
-    agregarMensaje(text, 'user');
-    input.value = '';
+// Cargar maestro.json
+fetch('maestro.json')
+.then(res => res.json())
+.then(data => maestroData = data)
+.catch(() => console.log("No se pudo cargar maestro.json"));
 
-    // Llamada al motor
-    let response = '';
-    try {
-        const res = await fetch('motores/verificar_v3.py', {
-            method:'POST',
-            body: JSON.stringify({query:text}),
-            headers: {'Content-Type':'application/json'}
-        });
-        const data = await res.json();
-        response = data.answer || "No he entendido bien la consulta. Envíame una foto por WhatsApp y te ayudo inmediatamente.\nI didn't understand the query. Send me a photo via WhatsApp and I will help you immediately.";
-    } catch(e) {
-        response = "No he entendido bien la consulta. Envíame una foto por WhatsApp y te ayudo inmediatamente.\nI didn't understand the query. Send me a photo via WhatsApp and I will help you immediately.";
-    }
-    agregarMensaje(response, 'bot');
-}
-
-function agregarMensaje(text, clase){
+function agregarMensaje(texto, clase){
     const div = document.createElement('div');
     div.className = 'message ' + clase;
-    div.innerHTML = text.replace(/\n/g,'<br>');
-    messages.appendChild(div);
-    messages.scrollTop = messages.scrollHeight;
+    div.innerHTML = texto;
+    document.getElementById('messages').appendChild(div);
+    document.getElementById('messages').scrollTop = 99999;
 }
 
-sendBtn.addEventListener('click', enviarMensaje);
-input.addEventListener('keypress', function(e){
-    if(e.key==='Enter') enviarMensaje();
+function buscarRespuesta(pregunta){
+    pregunta = pregunta.toLowerCase();
+
+    for(let item of maestroData){
+        if(item.palabras_clave){
+            for(let palabra of item.palabras_clave){
+                if(pregunta.includes(palabra.toLowerCase())){
+                    return item.respuesta;
+                }
+            }
+        }
+    }
+
+    return "No he entendido bien la consulta.<br>Envíame una foto por WhatsApp y te ayudo inmediatamente.";
+}
+
+document.getElementById('send-btn').onclick = enviar;
+document.getElementById('input').addEventListener('keypress', function(e){
+    if(e.key === 'Enter') enviar();
 });
+
+function enviar(){
+    const input = document.getElementById('input');
+    const texto = input.value.trim();
+    if(!texto) return;
+
+    agregarMensaje(texto, 'user');
+    input.value = '';
+
+    const respuesta = buscarRespuesta(texto);
+    agregarMensaje(respuesta, 'bot');
+}
 </script>
 
 </body>
