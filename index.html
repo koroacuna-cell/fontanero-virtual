@@ -5,119 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fontanero Virtual Eduardo Quiróz</title>
 <style>
-body{
-    font-family: Arial, sans-serif;
-    background: #f2f2f2;
-    margin:0;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    min-height:100vh;
-    padding:20px;
-}
-#box{
-    background:white;
-    max-width:500px;
-    width:95%;
-    padding:15px;
-    border-radius:12px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.2);
-    text-align:center;
-    display:flex;
-    flex-direction:column;
-    height:90vh;
-}
-h1{
-    color:#075e54;
-    margin-bottom:5px;
-    font-size:20px;
-}
-#messages{
-    flex:1;
-    margin-top:10px;
-    text-align:left;
-    overflow-y:auto;
-    border:1px solid #ccc;
-    border-radius:10px;
-    padding:10px;
-    background:#fafafa;
-}
-.user{
-    margin:5px;
-    text-align:right;
-    font-weight:bold;
-}
-.bot{
-    margin:5px;
-    text-align:left;
-}
-.term-card{
-    border:1px solid #ccc;
-    border-radius:10px;
-    padding:8px;
-    margin:5px 0;
-    background:#f9f9f9;
-}
-.term-card a{
-    color:#128c7e;
-    text-decoration:none;
-    font-weight:bold;
-}
-.btn-container{
-    display:flex;
-    gap:10px;
-    justify-content:center;
-    margin-top:10px;
-}
-.btn{
-    flex:1;
-    padding:10px;
-    border:none;
-    border-radius:20px;
-    font-size:14px;
-    font-weight:bold;
-    cursor:pointer;
-    text-decoration:none;
-    text-align:center;
-}
+body{font-family:Arial,sans-serif;background:#f2f2f2;margin:0;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:20px;}
+#box{background:white;max-width:500px;width:95%;padding:15px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.2);text-align:center;display:flex;flex-direction:column;height:90vh;}
+h1{color:#075e54;margin-bottom:5px;font-size:20px;}
+#messages{flex:1;margin-top:10px;text-align:left;overflow-y:auto;border:1px solid #ccc;border-radius:10px;padding:10px;background:#fafafa;}
+.user{margin:5px;text-align:right;font-weight:bold;}
+.bot{margin:5px;text-align:left;}
+.term-card{border:1px solid #ccc;border-radius:10px;padding:8px;margin:5px 0;background:#f9f9f9;}
+.term-card a{color:#128c7e;text-decoration:none;font-weight:bold;}
+.btn-container{display:flex;gap:10px;justify-content:center;margin-top:10px;}
+.btn{flex:1;padding:10px;border:none;border-radius:20px;font-size:14px;font-weight:bold;cursor:pointer;text-decoration:none;text-align:center;}
 .whatsapp{background:#25D366;color:white;}
 .catalogo{background:#075e54;color:white;}
 .llamar{background:#128c7e;color:white;}
-#input-container{
-    display:flex;
-    gap:5px;
-    margin-top:10px;
-}
-#input{
-    flex:1;
-    padding:12px;
-    border-radius:20px;
-    border:1px solid #ccc;
-    font-size:1em;
-}
-#send-btn{
-    background:#128c7e;
-    color:white;
-    border:none;
-    padding:12px 15px;
-    border-radius:20px;
-    font-weight:bold;
-    cursor:pointer;
-}
-.small{
-    font-size:13px;
-    color:#666;
-    margin-top:10px;
-}
+#input-container{display:flex;gap:5px;margin-top:10px;}
+#input{flex:1;padding:12px;border-radius:20px;border:1px solid #ccc;font-size:1em;}
+#send-btn{background:#128c7e;color:white;border:none;padding:12px 15px;border-radius:20px;font-weight:bold;cursor:pointer;}
+.small{font-size:13px;color:#666;margin-top:10px;}
 </style>
 </head>
 <body>
 <div id="box">
 <h1>Fontanero Virtual Eduardo Quiróz</h1>
 <p>Describe tu problema o indica marca/modelo del termo.<br>Describe your problem or write brand/model of water heater.</p>
-<div id="messages">
-<div class="bot">Hola, soy el Fontanero Virtual Eduardo Quiróz. Hi, I am the Virtual Plumber Eduardo Quiróz.</div>
-</div>
+<div id="messages"><div class="bot">Hola, soy el Fontanero Virtual Eduardo Quiróz. Hi, I am the Virtual Plumber Eduardo Quiróz.</div></div>
 
 <div id="input-container">
 <input type="text" id="input" placeholder="Escribe tu consulta... / Type your query...">
@@ -132,15 +43,17 @@ h1{
 <p class="small">English: Send a photo on WhatsApp for exact price and availability. You can also check the catalogue.</p>
 </div>
 
+<!-- Motores JS -->
 <script src="motores/MotorV3.js"></script>
 <script src="motores/MotorV4.js"></script>
 <script src="motores/MotorVendedor.js"></script>
 <script src="motores/integrar_motor_debug.js"></script>
 
 <script>
+// Función WhatsApp
 function abrirWhatsApp(){
-    const mensaje=encodeURIComponent('Hola Eduardo, quiero cambiar mi termo. Te envío la foto para que me confirmes precio final y disponibilidad esta semana.');
-    window.open('https://wa.me/34603398960?text='+mensaje,'_blank');
+  const mensaje=encodeURIComponent('Hola Eduardo, quiero cambiar mi termo. Te envío la foto para que me confirmes precio final y disponibilidad esta semana.');
+  window.open('https://wa.me/34603398960?text='+mensaje,'_blank');
 }
 </script>
 </body>
