@@ -3,79 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fontanero Virtual Eduardo Quiróz - Termos Eléctricos y Fontanería</title>
-<meta name="description" content="Consulta al Fontanero Virtual Eduardo Quiróz sobre termos eléctricos, fugas de agua y servicios de fontanería en Torrevieja. Precios, características y contacto.">
-<meta name="keywords" content="fontanero, termos eléctricos, fugas, torrevieja, calefacción agua, fontanería, Eduardo Quiróz">
+<title>Fontanero Virtual Eduardo Quiróz</title>
 <style>
 body{font-family:Arial,sans-serif;background:#f2f2f2;margin:0;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:20px;}
-header{text-align:center;margin-bottom:15px;}
-h1{color:#075e54;margin:0;font-size:1.8em;}
-h2{color:#128c7e;margin:5px 0;font-size:1.2em;}
-main{background:white;max-width:500px;width:95%;padding:20px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.2);}
-#messages{margin-top:15px;text-align:left;max-height:300px;overflow-y:auto;border:1px solid #ccc;border-radius:10px;padding:10px;}
+#box{background:white;max-width:500px;width:95%;padding:20px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.2);text-align:center;}
+h1{color:#075e54;margin-bottom:10px;}
+p{font-size:15px;}
+#messages{margin-top:15px;text-align:left;max-height:400px;overflow-y:auto;border:1px solid #ccc;border-radius:10px;padding:10px;}
 .user{margin:5px;text-align:right;font-weight:bold;}
 .bot{margin:5px;text-align:left;}
-article.term-card{border:1px solid #ccc;border-radius:10px;padding:8px;margin:8px 0;background:#f9f9f9;}
-article.term-card img{max-width:100%;border-radius:5px;}
-article.term-card a{color:#075e54;text-decoration:none;font-weight:bold;}
-section.buttons{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;justify-content:center;}
-.btn{flex:1;padding:10px;border:none;border-radius:25px;font-size:14px;font-weight:bold;cursor:pointer;text-decoration:none;text-align:center;}
+.term-card{border:1px solid #ccc;border-radius:10px;padding:8px;margin:5px 0;background:#f9f9f9;}
+.term-card a{color:#128c7e;text-decoration:none;font-weight:bold;}
+.btn-container{display:flex;gap:10px;justify-content:center;margin-top:15px;}
+.btn{flex:1;padding:10px;border:none;border-radius:20px;font-size:14px;font-weight:bold;cursor:pointer;text-decoration:none;text-align:center;}
 .whatsapp{background:#25D366;color:white;}
 .catalogo{background:#075e54;color:white;}
 .llamar{background:#128c7e;color:white;}
 #input-container{display:flex;gap:5px;margin-top:10px;}
-#input{flex:1;padding:10px;border-radius:20px;border:1px solid #ccc;font-size:1em;}
-#send-btn{background:#128c7e;color:white;border:none;padding:10px 15px;border-radius:20px;font-weight:bold;cursor:pointer;}
-.small{font-size:13px;color:#666;margin-top:10px;text-align:center;}
+#input{flex:1;padding:12px;border-radius:20px;border:1px solid #ccc;font-size:1em;}
+#send-btn{background:#128c7e;color:white;border:none;padding:12px 15px;border-radius:20px;font-weight:bold;cursor:pointer;}
+.small{font-size:13px;color:#666;margin-top:10px;}
 </style>
 </head>
 <body>
-<header>
+<div id="box">
 <h1>Fontanero Virtual Eduardo Quiróz</h1>
 <p>Describe tu problema o indica marca/modelo del termo.<br>Describe your problem or write brand/model of water heater.</p>
-</header>
-<main>
-<div id="messages">
-<div class="bot">Hola, soy el Fontanero Virtual Eduardo Quiróz. Hi, I am the Virtual Plumber Eduardo Quiróz.</div>
-</div>
+
+<div id="messages"><div class="bot">Hola, soy el Fontanero Virtual Eduardo Quiróz. Hi, I am the Virtual Plumber Eduardo Quiróz.</div></div>
 
 <div id="input-container">
 <input type="text" id="input" placeholder="Escribe tu consulta... / Type your query...">
 <button id="send-btn">Enviar / Send</button>
 </div>
 
-<section class="buttons">
+<div class="btn-container">
 <a class="btn whatsapp" onclick="abrirWhatsApp()">📲 WhatsApp</a>
-<a class="btn catalogo" href="https://huevador.es/fontaneria-eduardo-quiroz" target="_blank">📖 Catálogo</a>
+<a class="btn catalogo" href="https://fontaneriaeduardoquiroz.webador.es/" target="_blank">📖 Catálogo</a>
 <a class="btn llamar" href="tel:+34603398960">📞 Llamar</a>
-</section>
+</div>
 
 <p class="small">English: Send a photo on WhatsApp for exact price and availability. You can also check the catalogue.</p>
-</main>
+</div>
 
 <script>
-// JSON de termos
-const termos = [
-{"nombre":"SIMAT","foto":"SIMAT.jpg","link":"https://huevador.es/fontaneria-eduardo-quiroz","capacidades":[{"litros":50,"precio":195},{"litros":80,"precio":240},{"litros":100,"precio":280}],"descripcion_es":"Termo eléctrico SIMAT económico y eficiente, calderín esmaltado con ánodo de magnesio, resistencia sumergida de 1200W. Instalación incluida, más IVA.","descripcion_en":"SIMAT electric water heater, economical and efficient, enamel tank with magnesium anode, 1200W immersed resistance. Installation included, plus VAT."},
-{"nombre":"PRO R","foto":"PRO-R.jpg","link":"https://huevador.es/fontaneria-eduardo-quiroz","capacidades":[{"litros":50,"precio":260},{"litros":80,"precio":310},{"litros":100,"precio":360}],"descripcion_es":"Termo eléctrico Ariston PRO R con resistencia blindada, tecnología WaterPlus, calderín esmaltado con titanio. Instalación incluida, más IVA.","descripcion_en":"Ariston PRO R electric water heater with armored resistance, WaterPlus technology, enamelled tank with titanium. Installation included, plus VAT."},
-{"nombre":"MULTIDRIVE","foto":"MULTIDRIVE.jpg","link":"https://huevador.es/fontaneria-eduardo-quiroz","capacidades":[{"litros":50,"precio":370},{"litros":80,"precio":430},{"litros":100,"precio":490}],"descripcion_es":"MULTIDRIVE con doble resistencia envainada, calderín protegido contra la cal. Instalación incluida, más IVA. Recomendado para agua dura.","descripcion_en":"MULTIDRIVE with double sheathed resistance, tank protected against lime. Installation included, plus VAT. Recommended for hard water."}
-];
+// Cargar los JSON
+let maestro = {};
+let recomendaciones = {};
+fetch('maestro.json').then(r=>r.json()).then(d=>maestro=d);
+fetch('recomendaciones_completa.json').then(r=>r.json()).then(d=>recomendaciones=d);
 
-// Funciones del motor
-function mostrarTermos(mensaje){
-    const inputLitros = mensaje.match(/(\d+)\s*(l|lt|litros)/i);
-    let litrosFiltro = inputLitros ? parseInt(inputLitros[1]) : null;
-    let lang = mensaje.toLowerCase().includes('english') ? 'en' : 'es';
-    let html = '';
-    termos.forEach(t=>{
-        const capacidadesFiltradas = litrosFiltro ? t.capacidades.filter(c=>c.litros===litrosFiltro) : t.capacidades;
-        capacidadesFiltradas.forEach(c=>{
-            html += `<article class="term-card"><a href="${t.link}" target="_blank">${t.nombre} - ${c.litros}L: ${c.precio}€</a><img src="${t.foto}" alt="${t.nombre}"><p>${lang==='es'?t.descripcion_es:t.descripcion_en} <a href="${t.link}" target="_blank">Ver más</a></p></article>`;
-        });
-    });
-    return html || (lang==='es'?'No hay termos disponibles para esa capacidad.':'No water heaters available for this capacity.');
-}
-
+// Funciones de chat
 function agregarMensajeUsuario(texto){
     const div = document.createElement('div'); div.classList.add('user'); div.textContent = texto;
     document.getElementById('messages').appendChild(div);
@@ -88,18 +66,53 @@ function agregarMensajeBot(texto){
     document.getElementById('messages').scrollTop=document.getElementById('messages').scrollHeight;
 }
 
-document.getElementById('send-btn').addEventListener('click', ()=>{
-    const texto = document.getElementById('input').value.trim(); if(!texto) return;
-    agregarMensajeUsuario(texto); document.getElementById('input').value='';
-    let procesado=false;
-    if(texto.toLowerCase().includes('termo')){ agregarMensajeBot(mostrarTermos(texto)); procesado=true;}
-    if(texto.toLowerCase().includes('fuga') || texto.toLowerCase().includes('pierde agua')){ 
-        agregarMensajeBot('Las fugas pueden deberse a juntas deterioradas o presión excesiva. Envíame una foto por WhatsApp. Leaks may be due to worn gaskets or excessive pressure. Send a photo via WhatsApp.'); procesado=true;
+function buscarTermo(texto){
+    const litrosMatch = texto.match(/(\d+)\s*(l|lt|litros)/i);
+    const litros = litrosMatch ? parseInt(litrosMatch[1]) : null;
+    const lang = texto.toLowerCase().includes('english') ? 'en' : 'es';
+    let html='';
+    Object.values(maestro).forEach(t=>{
+        if(litros && !t.capacidades.includes(litros)) return;
+        html += `<div class="term-card"><a href="${t.link}" target="_blank">${t.nombre} ${litros?litros+'L':''}</a><p>${lang==='es'?t.descripcion_es:t.descripcion_en}</p></div>`;
+    });
+    if(!html && lang==='es') html='No hay termos disponibles para esa capacidad.';
+    if(!html && lang==='en') html='No water heaters available for this capacity.';
+    return html;
+}
+
+function procesarConsulta(texto){
+    const mensajeLower = texto.toLowerCase();
+    const lang = mensajeLower.includes('english') ? 'en' : 'es';
+
+    if(mensajeLower.includes('termo')){
+        agregarMensajeBot(buscarTermo(texto));
+        return;
     }
-    if(!procesado){ agregarMensajeBot('No he entendido la consulta. Envíame una foto por WhatsApp. I didn\'t understand the query. Send me a photo via WhatsApp.');}
+
+    if(mensajeLower.includes('fuga') || mensajeLower.includes('pierde agua')){
+        agregarMensajeBot('Las fugas pueden deberse a juntas deterioradas o presión excesiva. Envíame una foto por WhatsApp. Leaks may be due to worn gaskets or excessive pressure. Send a photo via WhatsApp.');
+        return;
+    }
+
+    if(mensajeLower.includes('fontanero')){
+        agregarMensajeBot(lang==='es'?'Un fontanero puede ir a domicilio. Envíame foto por WhatsApp para coordinar.':'A plumber can come to your home. Send a photo via WhatsApp to coordinate.');
+        return;
+    }
+
+    agregarMensajeBot(lang==='es'?'No he entendido la consulta. Envíame una foto por WhatsApp.':'I didn\'t understand the query. Send a photo via WhatsApp.');
+}
+
+document.getElementById('send-btn').addEventListener('click', ()=>{
+    const texto = document.getElementById('input').value.trim();
+    if(!texto) return;
+    agregarMensajeUsuario(texto);
+    document.getElementById('input').value='';
+    procesarConsulta(texto);
 });
 
-document.getElementById('input').addEventListener('keypress', e=>{if(e.key==='Enter'){e.preventDefault();document.getElementById('send-btn').click();}});
+document.getElementById('input').addEventListener('keypress', e=>{
+    if(e.key==='Enter'){e.preventDefault();document.getElementById('send-btn').click();}
+});
 
 function abrirWhatsApp(){
     const mensaje=encodeURIComponent('Hola Eduardo, quiero cambiar mi termo. Te envío la foto para que me confirmes precio final y disponibilidad esta semana.');
