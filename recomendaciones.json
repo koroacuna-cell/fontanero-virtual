@@ -1,0 +1,27 @@
+{
+  "torrevieja_agua_dura": {
+    "descripcion_es": "En Torrevieja, donde el agua es dura, se recomienda resistencia envainada o sistema protegido contra la cal. Instalación incluida, más IVA.",
+    "descripcion_en": "In Torrevieja, where the water is hard, a sheathed resistance or system protected against limescale is recommended. Installation included, plus VAT.",
+    "modelos_recomendados": ["PRO R", "LYDOS ECO", "MULTIDRIVE"]
+  },
+  "familia_2_personas": {
+    "litros_recomendados": 50,
+    "mensaje_es": "Ideal para 1–2 personas. Instalación incluida, más IVA.",
+    "mensaje_en": "Ideal for 1–2 people. Installation included, plus VAT."
+  },
+  "familia_4_personas": {
+    "litros_recomendados": 80,
+    "mensaje_es": "Ideal para 3–4 personas. Instalación incluida, más IVA.",
+    "mensaje_en": "Ideal for 3–4 people. Installation included, plus VAT."
+  },
+  "alto_consumo": {
+    "litros_recomendados": 100,
+    "mensaje_es": "Para alta demanda de agua caliente. Instalación incluida, más IVA.",
+    "mensaje_en": "For high hot water demand. Installation included, plus VAT."
+  },
+  "maximo_ahorro": {
+    "modelos_recomendados": ["HÍBRIDO Wi-Fi", "NUOS EVO A+"],
+    "mensaje_es": "Para máximo ahorro energético. Instalación incluida, más IVA.",
+    "mensaje_en": "For maximum energy savings. Installation included, plus VAT."
+  }
+}

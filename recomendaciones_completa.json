@@ -1,0 +1,80 @@
+{
+  "SIMAT": {
+    "capacidades": [
+      {"litros": 50, "precio": 195},
+      {"litros": 80, "precio": 240},
+      {"litros": 100, "precio": 280}
+    ],
+    "descripcion_es": "Termo eléctrico SIMAT económico y eficiente, calderín esmaltado con ánodo de magnesio, resistencia sumergida de 1200W. Instalación incluida, más IVA.",
+    "descripcion_en": "SIMAT electric water heater, economical and efficient, enameled tank with magnesium anode, 1200W immersed resistance. Installation included, plus VAT."
+  },
+  "PRO R": {
+    "capacidades": [
+      {"litros": 50, "precio": 260},
+      {"litros": 80, "precio": 310},
+      {"litros": 100, "precio": 360}
+    ],
+    "descripcion_es": "Termo eléctrico Ariston PRO R con resistencia blindada, tecnología WaterPlus, calderín esmaltado con titanio. Instalación incluida, más IVA.",
+    "descripcion_en": "Ariston PRO R electric water heater with armored resistance, WaterPlus technology, enameled titanium tank. Installation included, plus VAT."
+  },
+  "LYDOS ECO": {
+    "capacidades": [
+      {"litros": 50, "precio": 280},
+      {"litros": 80, "precio": 330},
+      {"litros": 100, "precio": 380}
+    ],
+    "descripcion_es": "Termo eléctrico Ariston LYDOS ECO con resistencia blindada, tecnología WaterPlus, función ECO EVO. Instalación incluida, más IVA.",
+    "descripcion_en": "Ariston LYDOS ECO electric water heater with armored resistance, WaterPlus technology, ECO EVO function. Installation included, plus VAT."
+  },
+  "LYDOS ECO Wi-Fi": {
+    "capacidades": [
+      {"litros": 50, "precio": 330},
+      {"litros": 80, "precio": 380},
+      {"litros": 100, "precio": 430}
+    ],
+    "descripcion_es": "LYDOS ECO Wi-Fi con resistencia blindada, conectividad Wi-Fi, función ECO EVO y T-Max. Instalación incluida, más IVA.",
+    "descripcion_en": "LYDOS ECO Wi-Fi with armored resistance, Wi-Fi connectivity, ECO EVO and T-Max functions. Installation included, plus VAT."
+  },
+  "VELIS PRO Wi-Fi": {
+    "capacidades": [
+      {"litros": 50, "precio": 420},
+      {"litros": 80, "precio": 480},
+      {"litros": 100, "precio": 540}
+    ],
+    "descripcion_es": "VELIS PRO Wi-Fi con diseño plano, doble acumulador, resistencias alternas, conectividad Wi-Fi. Instalación incluida, más IVA.",
+    "descripcion_en": "VELIS PRO Wi-Fi with flat design, dual tank, alternate resistances, Wi-Fi connectivity. Installation included, plus VAT."
+  },
+  "MULTIDRIVE": {
+    "capacidades": [
+      {"litros": 50, "precio": 370},
+      {"litros": 80, "precio": 430},
+      {"litros": 100, "precio": 490}
+    ],
+    "descripcion_es": "MULTIDRIVE con doble resistencia envainada, calderín protegido contra la cal. Instalación incluida, más IVA. Recomendado para agua dura.",
+    "descripcion_en": "MULTIDRIVE with double sheathed resistance, tank protected against limescale. Installation included, plus VAT. Recommended for hard water."
+  },
+  "HÍBRIDO Wi-Fi": {
+    "capacidades": [
+      {"litros": 80, "precio": 840},
+      {"litros": 100, "precio": 950}
+    ],
+    "descripcion_es": "Termo híbrido Wi-Fi con resistencia eléctrica de 1200W y aerotermia. Instalación incluida, más IVA.",
+    "descripcion_en": "Hybrid Wi-Fi water heater with 1200W electric resistance and aerothermal system. Installation included, plus VAT."
+  },
+  "NUOS EVO A+": {
+    "capacidades": [
+      {"litros": 110, "precio": 1490}
+    ],
+    "descripcion_es": "Termo NUOS EVO A+ con resistencia eléctrica y bomba de calor, máxima eficiencia Clase A. Instalación incluida, más IVA.",
+    "descripcion_en": "NUOS EVO A+ water heater with electric resistance and heat pump, maximum Class A efficiency. Installation included, plus VAT."
+  },
+  "VELIS Wi-Fi": {
+    "capacidades": [
+      {"litros": 50, "precio": 420},
+      {"litros": 80, "precio": 480},
+      {"litros": 100, "precio": 540}
+    ],
+    "descripcion_es": "VELIS Wi-Fi con diseño plano, doble acumulador, resistencias alternas, conectividad Wi-Fi. Instalación incluida, más IVA.",
+    "descripcion_en": "VELIS Wi-Fi with flat design, dual tank, alternate resistances, Wi-Fi connectivity. Installation included, plus VAT."
+  }
+}

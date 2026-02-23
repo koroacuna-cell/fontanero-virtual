@@ -5,14 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fontanero Virtual</title>
 
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NMPMJP4T');</script>
-<!-- End Google Tag Manager -->
-
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4Q4PZBJ75K"></script>
 <script>
@@ -23,18 +15,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 <!-- Fin Google Analytics -->
 
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NMPMJP4T');</script>
+<!-- End Google Tag Manager -->
+
 <!-- Carga de scripts del motor -->
 <script src="motores/verificar_v4.js"></script>
 <script src="motores/motor_vendedor.js"></script>
 <script src="motores/integrar_motor_index.html"></script>
+
 <script>
   // Inicialización del motor de recomendaciones
-  fetch('recomendaciones.json').then(r => r.json()).then(data => {
-    window.recomendaciones = data;
-  });
-  fetch('maestro_vendedor.json').then(r => r.json()).then(data => {
-    window.maestroVendedor = data;
-  });
+  fetch('recomendaciones.json').then(r => r.json()).then(data => { window.recomendaciones = data; });
+  fetch('maestro_vendedor.json').then(r => r.json()).then(data => { window.maestroVendedor = data; });
 </script>
 
 </head>

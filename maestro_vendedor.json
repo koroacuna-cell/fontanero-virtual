@@ -1,0 +1,64 @@
+{
+  "termos": [
+    {
+      "nombre": "SIMAT",
+      "foto": "SIMAT.jpg",
+      "link": "https://huevador.es/termos#SIMAT",
+      "capacidades": [
+        { "litros": 50, "precio": 195 },
+        { "litros": 80, "precio": 240 },
+        { "litros": 100, "precio": 280 }
+      ],
+      "descripcion_es": "Termo eléctrico SIMAT económico y eficiente, calderín esmaltado con ánodo de magnesio, resistencia sumergida de 1200W. Instalación incluida, más IVA. Ideal para viviendas pequeñas y medianas.",
+      "descripcion_en": "SIMAT economical and efficient electric water heater, enamelled tank with magnesium anode, 1200W immersed heating element. Installation included, plus VAT. Ideal for small to medium homes."
+    },
+    {
+      "nombre": "PRO R",
+      "foto": "PRO-R.jpg",
+      "link": "https://huevador.es/termos#PRO-R",
+      "capacidades": [
+        { "litros": 50, "precio": 260 },
+        { "litros": 80, "precio": 310 },
+        { "litros": 100, "precio": 360 }
+      ],
+      "descripcion_es": "Termo eléctrico Ariston PRO R con resistencia blindada para durabilidad, tecnología WaterPlus para hasta 16% más de agua caliente disponible. Instalación incluida, más IVA.",
+      "descripcion_en": "Ariston PRO R electric water heater with shielded heating element for durability, WaterPlus technology for up to 16% more hot water. Installation included, plus VAT."
+    },
+    {
+      "nombre": "LYDOS ECO",
+      "foto": "LYDOS-ECO.jpg",
+      "link": "https://huevador.es/termos#LYDOS-ECO",
+      "capacidades": [
+        { "litros": 50, "precio": 280 },
+        { "litros": 80, "precio": 330 },
+        { "litros": 100, "precio": 380 }
+      ],
+      "descripcion_es": "Termo eléctrico Ariston LYDOS ECO con resistencia blindada, tecnología WaterPlus para hasta 16% más de agua caliente, función ECO EVO para ahorro inteligente, calderín con titanio vitrificado. Instalación incluida, más IVA.",
+      "descripcion_en": "Ariston LYDOS ECO electric water heater with shielded heating element, WaterPlus technology for up to 16% more hot water, ECO EVO function for intelligent energy saving, vitrified titanium tank. Installation included, plus VAT."
+    },
+    {
+      "nombre": "MULTIDRIVE",
+      "foto": "MULTIDRIVE.jpg",
+      "link": "https://huevador.es/termos#MULTIDRIVE",
+      "capacidades": [
+        { "litros": 50, "precio": 370 },
+        { "litros": 80, "precio": 430 },
+        { "litros": 100, "precio": 490 }
+      ],
+      "descripcion_es": "Termo eléctrico Ariston PRO1 ECO Drive Multis con doble resistencia embainada, calderín protegido contra la cal, función ECO EVO. Instalación incluida, más IVA.",
+      "descripcion_en": "Ariston PRO1 ECO Drive Multis electric water heater with double sheathed heating element, scale-protected tank, ECO EVO function. Installation included, plus VAT."
+    },
+    {
+      "nombre": "VELIS PRO Wi-Fi",
+      "foto": "VELIS-PRO-WIFI.jpg",
+      "link": "https://huevador.es/termos#VELIS-PRO-WIFI",
+      "capacidades": [
+        { "litros": 50, "precio": 420 },
+        { "litros": 80, "precio": 480 },
+        { "litros": 100, "precio": 540 }
+      ],
+      "descripcion_es": "Termo eléctrico Ariston VELIS PRO Wi-Fi con diseño plano, doble acumulador, resistencias alternas, conectividad Wi-Fi, función ECO EVO, Shower Ready. Instalación incluida, más IVA.",
+      "descripcion_en": "Ariston VELIS PRO Wi-Fi electric water heater with flat design, dual tank, alternating resistances, Wi-Fi connectivity, ECO EVO function, Shower Ready. Installation included, plus VAT."
+    }
+  ]
+}
