@@ -4,27 +4,95 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fontanero Virtual</title>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4Q4PZBJ75K"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-4Q4PZBJ75K');
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NMPMJP4T');</script>
+
 </head>
 <body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMPMJP4T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<h1>Bienvenido al Fontanero Virtual</h1>
+<h1>Bienvenido al Fontanero Virtual / Welcome to Virtual Plumber</h1>
 
-<div id="fontanero-virtual-container"></div>
+<div id="fontanero-virtual-container">
+  <div id="messages"></div>
+  <div id="input-container">
+    <input type="text" id="input" placeholder="Describe tu problema... / Describe your problem...">
+    <button id="enviar-btn">Enviar / Send</button>
+  </div>
+</div>
 
-<script src="motores/verificar_v4.js"></script>
-<script src="motores/motor_vendedor.js"></script>
+<!-- Motor JS -->
 <script src="motores/integrar_motor.js"></script>
-
 <script>
-Promise.all([
-fetch('recomendaciones.json').then(r=>r.json()),
-fetch('maestro_vendedor.json').then(r=>r.json())
-]).then(([rec, maestro])=>{
-window.recomendaciones = rec;
-window.maestroVendedor = maestro;
-console.log("JSON cargados correctamente");
+document.addEventListener('DOMContentLoaded', () => {
+    // Configurar idioma: 'es' o 'en'
+    window.motorFontanero.idioma = 'es'; // cambiar a 'en' para inglés
+
+    fetch('recomendaciones.json').then(r => r.json()).then(data => window.recomendaciones = data);
+    fetch('maestro_vendedor.json').then(r => r.json()).then(data => window.maestroVendedor = data);
+
+    const input = document.getElementById('input');
+    const enviarBtn = document.getElementById('enviar-btn');
+    const container = document.getElementById('messages');
+
+    function agregarMensajeUsuario(texto){
+        const div = document.createElement('div');
+        div.classList.add('user');
+        div.textContent = texto;
+        container.appendChild(div);
+        container.scrollTop = container.scrollHeight;
+    }
+
+    function agregarMensajeBot(texto){
+        const div = document.createElement('div');
+        div.classList.add('bot');
+        div.innerHTML = texto;
+        container.appendChild(div);
+        container.scrollTop = container.scrollHeight;
+    }
+
+    enviarBtn.addEventListener('click', () => {
+        const texto = input.value.trim();
+        if(!texto) return;
+        agregarMensajeUsuario(texto);
+        input.value = '';
+        const procesado = window.motorFontanero.procesarConsulta(texto);
+        if(!procesado){
+            agregarMensajeBot(window.motorFontanero.idioma === 'es' ?
+                'No he entendido la consulta. Envíame una foto por WhatsApp.' :
+                'I didn\'t understand the query. Send me a photo via WhatsApp.');
+        }
+    });
+
+    input.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter'){ e.preventDefault(); enviarBtn.click(); }
+    });
 });
 </script>
+
+<style>
+#input-container { display:flex; margin-top:5px; }
+#input { flex:1; padding:12px; font-size:1.1em; border-radius:20px; border:1px solid #ccc; }
+#enviar-btn { padding:12px 20px; margin-left:5px; border:none; border-radius:20px; background:#25d366; color:#fff; font-weight:bold; cursor:pointer; }
+#enviar-btn:hover { background:#1ebe5d; }
+.user { margin:5px; text-align:right; font-weight:bold; }
+.bot { margin:5px; text-align:left; }
+</style>
 
 </body>
 </html>
