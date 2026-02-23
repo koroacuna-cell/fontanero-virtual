@@ -116,7 +116,7 @@ h1{
 <h1>Fontanero Virtual Eduardo Quiróz</h1>
 <p>Describe tu problema o indica marca/modelo del termo.<br>Describe your problem or write brand/model of water heater.</p>
 <div id="messages">
-    <div class="bot">Hola, soy el Fontanero Virtual Eduardo Quiróz. Hi, I am the Virtual Plumber Eduardo Quiróz.</div>
+<div class="bot">Hola, soy el Fontanero Virtual Eduardo Quiróz. Hi, I am the Virtual Plumber Eduardo Quiróz.</div>
 </div>
 
 <div id="input-container">
@@ -132,9 +132,12 @@ h1{
 <p class="small">English: Send a photo on WhatsApp for exact price and availability. You can also check the catalogue.</p>
 </div>
 
+<script src="motores/MotorV3.js"></script>
+<script src="motores/MotorV4.js"></script>
+<script src="motores/MotorVendedor.js"></script>
 <script src="motores/integrar_motor_debug.js"></script>
+
 <script>
-// Función WhatsApp
 function abrirWhatsApp(){
     const mensaje=encodeURIComponent('Hola Eduardo, quiero cambiar mi termo. Te envío la foto para que me confirmes precio final y disponibilidad esta semana.');
     window.open('https://wa.me/34603398960?text='+mensaje,'_blank');
