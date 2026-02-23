@@ -15,9 +15,27 @@
 </script>
 <!-- Fin Google Analytics -->
 
+<!-- Carga de scripts del motor -->
+<script src="motores/verificar_v4.js"></script>
+<script src="motores/motor_vendedor.js"></script>
+<script src="motores/integrar_motor_index.html"></script>
+<script>
+  // Inicialización del motor de recomendaciones
+  fetch('recomendaciones.json').then(r => r.json()).then(data => {
+    window.recomendaciones = data;
+  });
+  fetch('maestro_vendedor.json').then(r => r.json()).then(data => {
+    window.maestroVendedor = data;
+  });
+</script>
+
 </head>
 <body>
 <h1>Bienvenido al Fontanero Virtual</h1>
-<!-- Contenido de la página aquí -->
+
+<div id="fontanero-virtual-container">
+  <!-- Aquí se renderiza el motor virtual -->
+</div>
+
 </body>
 </html>
