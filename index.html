@@ -4,29 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fontanero Virtual</title>
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4Q4PZBJ75K"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-4Q4PZBJ75K');
-</script>
-
-<!-- Google Tag Manager -->
-<script>
-(function(w,d,s,l,i){
-w[l]=w[l]||[];
-w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
-var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-j.async=true;
-j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NMPMJP4T');
-</script>
-
 </head>
 <body>
 
@@ -34,11 +11,10 @@ f.parentNode.insertBefore(j,f);
 
 <div id="fontanero-virtual-container"></div>
 
-<!-- Cargar motores JS reales -->
 <script src="motores/verificar_v4.js"></script>
 <script src="motores/motor_vendedor.js"></script>
+<script src="motores/integrar_motor.js"></script>
 
-<!-- Cargar JSON -->
 <script>
 Promise.all([
 fetch('recomendaciones.json').then(r=>r.json()),
@@ -48,17 +24,6 @@ window.recomendaciones = rec;
 window.maestroVendedor = maestro;
 console.log("JSON cargados correctamente");
 });
-</script>
-
-<!-- Cargar integración HTML correctamente -->
-<script>
-fetch('motores/integrar_motor_index.html')
-.then(r=>r.text())
-.then(html=>{
-document.getElementById('fontanero-virtual-container').innerHTML = html;
-console.log("Interfaz cargada correctamente");
-})
-.catch(e=>console.error("Error cargando integración:",e));
 </script>
 
 </body>
