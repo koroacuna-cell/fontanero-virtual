@@ -5,17 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fontanero Virtual Eduardo Quiróz</title>
 <style>
-body{font-family:Arial,sans-serif;background:#f2f2f2;margin:0;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:20px;}
-#box{background:white;max-width:500px;width:95%;padding:25px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.2);text-align:center;}
-h1{color:#075e54;margin-bottom:10px;}
-p{font-size:15px;}
-#messages{margin-top:15px;text-align:left;max-height:400px;overflow-y:auto;border:1px solid #ccc;border-radius:10px;padding:10px;}
+body{font-family:Arial,sans-serif;background:#f2f2f2;margin:0;padding:0;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;}
+#box{background:white;width:100%;max-width:600px;padding:15px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.2);}
+h1{color:#075e54;margin:10px 0;font-size:20px;text-align:center;}
+#messages{margin-top:10px;text-align:left;max-height:500px;overflow-y:auto;border:1px solid #ccc;border-radius:10px;padding:10px;background:#fafafa;}
 .user{margin:5px;text-align:right;font-weight:bold;}
 .bot{margin:5px;text-align:left;}
-.term-card{border:1px solid #ccc;border-radius:10px;padding:8px;margin:5px 0;background:#f9f9f9;}
+.term-card{border:1px solid #ccc;border-radius:10px;padding:10px;margin:5px 0;background:#f9f9f9;}
 .term-card a{color:#128c7e;text-decoration:none;font-weight:bold;}
 .btn-container{display:flex;gap:10px;justify-content:center;margin-top:15px;}
-.btn{flex:1;padding:10px;border:none;border-radius:20px;font-size:14px;font-weight:bold;cursor:pointer;text-decoration:none;text-align:center;}
+.btn{flex:1;padding:10px;border:none;border-radius:20px;font-size:14px;font-weight:bold;cursor:pointer;text-align:center;text-decoration:none;}
 .whatsapp{background:#25D366;color:white;}
 .catalogo{background:#075e54;color:white;}
 .llamar{background:#128c7e;color:white;}
@@ -31,7 +30,7 @@ p{font-size:15px;}
 <p>Describe tu problema o indica marca/modelo del termo.<br>Describe your problem or write brand/model of water heater.</p>
 
 <div id="messages">
-<div class="bot">Hola, soy el Fontanero Virtual Eduardo Quiróz. Hi, I am the Virtual Plumber Eduardo Quiróz.</div>
+<div class="bot">Hola, soy el Fontanero Virtual Eduardo Quiróz.<br>Hi, I am the Virtual Plumber Eduardo Quiróz.</div>
 </div>
 
 <div id="input-container">
@@ -49,70 +48,84 @@ p{font-size:15px;}
 </div>
 
 <script>
-// Termos y recomendaciones
+// Termos ejemplo
 const termos = [
-{"nombre":"SIMAT","link":"https://fontaneriaeduardoquiroz.webador.es/termo-simat","capacidades":[{"litros":50,"precio":195},{"litros":80,"precio":240},{"litros":100,"precio":280}],"descripcion_es":"Termo eléctrico SIMAT económico y eficiente, calderín esmaltado con ánodo de magnesio, resistencia sumergida de 1200W. Instalación incluida, más IVA. Consulta fotos y detalles en nuestra página.","descripcion_en":"SIMAT electric water heater, economical and efficient, enamel tank with magnesium anode, 1200W immersed resistance. Installation included, plus VAT. Check photos and details on our page."},
-{"nombre":"PRO R","link":"https://fontaneriaeduardoquiroz.webador.es/termo-pro-r","capacidades":[{"litros":50,"precio":260},{"litros":80,"precio":310},{"litros":100,"precio":360}],"descripcion_es":"Termo eléctrico Ariston PRO R con resistencia blindada, tecnología WaterPlus, calderín esmaltado con titanio. Instalación incluida, más IVA. Consulta fotos y detalles en nuestra página.","descripcion_en":"Ariston PRO R electric water heater with armored resistance, WaterPlus technology, enamelled tank with titanium. Installation included, plus VAT. Check photos and details on our page."},
-{"nombre":"MULTIDRIVE","link":"https://fontaneriaeduardoquiroz.webador.es/termo-multidrive","capacidades":[{"litros":50,"precio":370},{"litros":80,"precio":430},{"litros":100,"precio":490}],"descripcion_es":"MULTIDRIVE con doble resistencia envainada, calderín protegido contra la cal. Instalación incluida, más IVA. Recomendado para agua dura. Consulta fotos y detalles en nuestra página.","descripcion_en":"MULTIDRIVE with double sheathed resistance, tank protected against limescale. Installation included, plus VAT. Recommended for hard water. Check photos and details on our page."}
+{"nombre":"SIMAT","link":"https://fontaneriaeduardoquiroz.webador.es/","capacidades":[{"litros":50,"precio":195},{"litros":80,"precio":240},{"litros":100,"precio":280}],"descripcion_es":"Termo eléctrico SIMAT económico y eficiente, calderín esmaltado con ánodo de magnesio, resistencia sumergida de 1200W. Instalación incluida, más IVA.","descripcion_en":"SIMAT electric water heater, economical and efficient, enamel tank with magnesium anode, 1200W immersed resistance. Installation included, plus VAT."},
+{"nombre":"PRO R","link":"https://fontaneriaeduardoquiroz.webador.es/","capacidades":[{"litros":50,"precio":260},{"litros":80,"precio":310},{"litros":100,"precio":360}],"descripcion_es":"Termo eléctrico Ariston PRO R con resistencia blindada, tecnología WaterPlus, calderín esmaltado con titanio. Instalación incluida, más IVA.","descripcion_en":"Ariston PRO R electric water heater with armored resistance, WaterPlus technology, enamelled tank with titanium. Installation included, plus VAT."},
+{"nombre":"MULTIDRIVE","link":"https://fontaneriaeduardoquiroz.webador.es/","capacidades":[{"litros":50,"precio":370},{"litros":80,"precio":430},{"litros":100,"precio":490}],"descripcion_es":"MULTIDRIVE con doble resistencia envainada, calderín protegido contra la cal. Instalación incluida, más IVA. Recomendado para agua dura.","descripcion_en":"MULTIDRIVE with double sheathed resistance, tank protected against limescale. Installation included, plus VAT. Recommended for hard water."}
 ];
 
 // Funciones de chat
 function agregarMensajeUsuario(texto){
-    const div = document.createElement('div'); div.classList.add('user'); div.textContent = texto;
+    const div=document.createElement('div');
+    div.classList.add('user');
+    div.textContent=texto;
     document.getElementById('messages').appendChild(div);
     document.getElementById('messages').scrollTop=document.getElementById('messages').scrollHeight;
 }
 
 function agregarMensajeBot(texto){
-    const div = document.createElement('div'); div.classList.add('bot'); div.innerHTML = texto;
+    const div=document.createElement('div');
+    div.classList.add('bot');
+    div.innerHTML=texto;
     document.getElementById('messages').appendChild(div);
     document.getElementById('messages').scrollTop=document.getElementById('messages').scrollHeight;
 }
 
+// Filtrado por litros
 function buscarTermo(texto){
-    const inputLitros = texto.match(/(\d+)\s*(l|lt|litros)?/i);
+    const inputLitros = texto.match(/(\d+)\s*(l|lt|litros)/i);
     const litrosFiltro = inputLitros ? parseInt(inputLitros[1]) : null;
     const lang = texto.toLowerCase().includes('english') ? 'en' : 'es';
-    let html = '';
-
-    termos.forEach(t => {
-        const capacidadesFiltradas = litrosFiltro ? t.capacidades.filter(c => c.litros === litrosFiltro) : t.capacidades;
-        capacidadesFiltradas.forEach(c => {
+    let html='';
+    termos.forEach(t=>{
+        const capacidadesFiltradas = litrosFiltro ? t.capacidades.filter(c=>c.litros===litrosFiltro) : t.capacidades;
+        capacidadesFiltradas.forEach(c=>{
             html += `<div class="term-card">
-                        <a href="${t.link}" target="_blank">${t.nombre} - ${c.litros}L: ${c.precio}€</a>
-                        <p>${lang==='es' ? t.descripcion_es : t.descripcion_en}</p>
-                     </div>`;
+                <a href="${t.link}" target="_blank">${t.nombre} - ${c.litros}L: ${c.precio}€</a>
+                <p>${lang==='es'?t.descripcion_es:t.descripcion_en}</p>
+                <p>Consulta fotos y detalles aquí / Check photos and details: <a href="${t.link}" target="_blank">${t.link}</a></p>
+            </div>`;
         });
     });
+    return html || (lang==='es'?'No hay termos disponibles para esa capacidad.':'No water heaters available for this capacity.');
+}
 
-    if(litrosFiltro && html===''){
-        html = lang==='es' ? 'No hay termos disponibles para esa capacidad.' : 'No water heaters available for this capacity.';
+// Mensaje de captación
+function mensajeCaptacion(lang){
+    if(lang==='es'){
+        return 'Envíanos una foto por WhatsApp para confirmar disponibilidad y recibir atención personalizada sobre tu termo.';
+    }else{
+        return 'Send us a photo on WhatsApp to check availability and get personalized assistance for your water heater.';
     }
-
-    return html;
 }
 
 // Eventos
 document.getElementById('send-btn').addEventListener('click', ()=>{
-    const texto = document.getElementById('input').value.trim();
+    const texto=document.getElementById('input').value.trim();
     if(!texto) return;
     agregarMensajeUsuario(texto);
     document.getElementById('input').value='';
-    const mensajeLower = texto.toLowerCase();
+    const mensajeLower=texto.toLowerCase();
+    const lang = texto.toLowerCase().includes('english') ? 'en' : 'es';
     let procesado=false;
 
-    if(mensajeLower.includes('termo') || mensajeLower.includes('thermo')){
+    // Termos
+    if(mensajeLower.includes('termo')){
         agregarMensajeBot(buscarTermo(texto));
         procesado=true;
     }
 
+    // Fugas
     if(mensajeLower.includes('fuga') || mensajeLower.includes('pierde agua')){
-        agregarMensajeBot('Las fugas pueden deberse a juntas deterioradas o presión excesiva. Envíame una foto por WhatsApp. Leaks may be due to worn gaskets or excessive pressure. Send a photo via WhatsApp. Consulta fotos y detalles en nuestra página: <a href="https://fontaneriaeduardoquiroz.webador.es/" target="_blank">Fontanería Eduardo Quiróz</a>.');
+        agregarMensajeBot(lang==='es'?'Las fugas pueden deberse a juntas deterioradas o presión excesiva. '+mensajeCaptacion(lang):
+        'Leaks may be due to worn gaskets or excessive pressure. '+mensajeCaptacion(lang));
         procesado=true;
     }
 
+    // Mensaje general si no se entiende
     if(!procesado){
-        agregarMensajeBot('No he entendido la consulta. Envíame una foto por WhatsApp. I didn\'t understand the query. Send me a photo via WhatsApp. Consulta fotos y detalles en nuestra página: <a href="https://fontaneriaeduardoquiroz.webador.es/" target="_blank">Fontanería Eduardo Quiróz</a>.');
+        agregarMensajeBot(mensajeCaptacion(lang));
     }
 });
 
