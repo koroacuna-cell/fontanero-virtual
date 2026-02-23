@@ -5,99 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fontanero Virtual Eduardo Quiróz</title>
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #f2f2f2;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding: 20px;
-}
-#box {
-    background: white;
-    max-width: 500px;
-    width: 95%;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: column;
-    height: 90vh;
-}
-h1 {
-    color: #075e54;
-    margin-bottom: 10px;
-    text-align: center;
-}
-#messages {
-    flex: 1;
-    margin-top: 10px;
-    text-align: left;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 10px;
-    background: #fafafa;
-}
-.user {
-    margin: 5px;
-    text-align: right;
-    font-weight: bold;
-}
-.bot {
-    margin: 5px;
-    text-align: left;
-}
-#input-container {
-    display: flex;
-    gap: 5px;
-    margin-top: 10px;
-}
-#input {
-    flex: 1;
-    padding: 12px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    font-size: 1em;
-}
-#send-btn {
-    background: #128c7e;
-    color: white;
-    border: none;
-    padding: 12px 15px;
-    border-radius: 20px;
-    font-weight: bold;
-    cursor: pointer;
-}
-.btn-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    gap: 5px;
-}
-.btn {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-}
-.whatsapp { background: #25D366; }
-.catalogo { background: #075e54; }
-.llamar { background: #128c7e; }
-.small {
-    font-size: 13px;
-    color: #666;
-    margin-top: 5px;
-    text-align: center;
-}
+body{font-family:Arial,sans-serif;background:#f2f2f2;margin:0;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:20px;}
+#box{background:white;max-width:500px;width:95%;padding:25px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.2);text-align:center;}
+h1{color:#075e54;margin-bottom:10px;}
+p{font-size:15px;}
+ul{text-align:left;margin-top:10px;}
+#messages{margin-top:15px;text-align:left;max-height:400px;overflow-y:auto;border:1px solid #ccc;border-radius:10px;padding:10px;}
+.user{margin:5px;text-align:right;font-weight:bold;}
+.bot{margin:5px;text-align:left;}
+.term-card{border:1px solid #ccc;border-radius:10px;padding:8px;margin:5px 0;background:#f9f9f9;}
+.term-card a{color:#128c7e;text-decoration:none;font-weight:bold;}
+.btn-container{display:flex;gap:10px;justify-content:center;margin-top:15px;}
+.btn{flex:1;padding:10px;border:none;border-radius:20px;font-size:14px;font-weight:bold;cursor:pointer;text-decoration:none;text-align:center;}
+.whatsapp{background:#25D366;color:white;}
+.catalogo{background:#075e54;color:white;}
+.llamar{background:#128c7e;color:white;}
+#input-container{display:flex;gap:5px;margin-top:10px;}
+#input{flex:1;padding:12px;border-radius:20px;border:1px solid #ccc;font-size:1em;}
+#send-btn{background:#128c7e;color:white;border:none;padding:12px 15px;border-radius:20px;font-weight:bold;cursor:pointer;}
+.small{font-size:13px;color:#666;margin-top:10px;}
 </style>
 </head>
 <body>
@@ -122,27 +48,20 @@ h1 {
 </div>
 
 <script>
-// JSON de termos (ejemplo simplificado, se puede ampliar con recomendaciones_completa.json)
-const termos = [
-    {"nombre":"SIMAT","capacidades":[{"litros":50,"precio":195},{"litros":80,"precio":240},{"litros":100,"precio":280}]},
-    {"nombre":"PRO R","capacidades":[{"litros":50,"precio":260},{"litros":80,"precio":310},{"litros":100,"precio":360}]},
-    {"nombre":"MULTIDRIVE","capacidades":[{"litros":50,"precio":370},{"litros":80,"precio":430},{"litros":100,"precio":490}]}
-];
+// Cargar JSONs (simulación local)
+const recomendaciones = {
+  "torrevieja_agua_dura": {"descripcion_es":"En Torrevieja, donde el agua es dura, se recomienda el modelo MULTIDRIVE con resistencia envainada para protección contra la cal. Instalación incluida, más IVA.","descripcion_en":"In Torrevieja, where the water is hard, the MULTIDRIVE model with sheathed resistance is recommended for limescale protection. Installation included, plus VAT.","modelos_recomendados":["MULTIDRIVE"]},
+  "familia_2_personas":{"litros_recomendados":50,"mensaje_es":"Ideal para 1–2 personas. Instalación incluida, más IVA.","mensaje_en":"Ideal for 1–2 people. Installation included, plus VAT."},
+  "familia_4_personas":{"litros_recomendados":80,"mensaje_es":"Ideal para 3–4 personas. Instalación incluida, más IVA.","mensaje_en":"Ideal for 3–4 people. Installation included, plus VAT."},
+  "alto_consumo":{"litros_recomendados":100,"mensaje_es":"Para alta demanda de agua caliente. Instalación incluida, más IVA.","mensaje_en":"For high hot water demand. Installation included, plus VAT."},
+  "maximo_ahorro":{"modelos_recomendados":["HÍBRIDO Wi-Fi","NUOS EVO A+"],"mensaje_es":"Para máximo ahorro energético. Instalación incluida, más IVA.","mensaje_en":"For maximum energy savings. Installation included, plus VAT."}
+};
 
-// Funciones del motor
-function mostrarTermos(mensaje){
-    const inputLitros = mensaje.match(/(\d+)\s*(l|lt|litros)/i);
-    let litrosFiltro = inputLitros ? parseInt(inputLitros[1]) : null;
-    let lang = mensaje.toLowerCase().includes('english') ? 'en' : 'es';
-    let html = '';
-    termos.forEach(t=>{
-        const capacidadesFiltradas = litrosFiltro ? t.capacidades.filter(c=>c.litros===litrosFiltro) : t.capacidades;
-        capacidadesFiltradas.forEach(c=>{
-            html += `<div class="term-card"><strong>${t.nombre} - ${c.litros}L: ${c.precio}€</strong></div>`;
-        });
-    });
-    return html || (lang==='es'?'No hay termos disponibles para esa capacidad.':'No water heaters available for this capacity.');
-}
+const termos = [
+{"nombre":"SIMAT","link":"https://huevador.es/termo-simat","capacidades":[{"litros":50,"precio":195},{"litros":80,"precio":240},{"litros":100,"precio":280}],"descripcion_es":"Termo eléctrico SIMAT económico y eficiente, calderín esmaltado con ánodo de magnesio, resistencia sumergida de 1200W. Instalación incluida, más IVA.","descripcion_en":"SIMAT electric water heater, economical and efficient, enamel tank with magnesium anode, 1200W immersed resistance. Installation included, plus VAT."},
+{"nombre":"PRO R","link":"https://huevador.es/termo-pro-r","capacidades":[{"litros":50,"precio":260},{"litros":80,"precio":310},{"litros":100,"precio":360}],"descripcion_es":"Termo eléctrico Ariston PRO R con resistencia blindada, tecnología WaterPlus, calderín esmaltado con titanio. Instalación incluida, más IVA.","descripcion_en":"Ariston PRO R electric water heater with armored resistance, WaterPlus technology, enamelled tank with titanium. Installation included, plus VAT."},
+{"nombre":"MULTIDRIVE","link":"https://huevador.es/termo-multidrive","capacidades":[{"litros":50,"precio":370},{"litros":80,"precio":430},{"litros":100,"precio":490}],"descripcion_es":"MULTIDRIVE con doble resistencia envainada, calderín protegido contra la cal. Instalación incluida, más IVA. Recomendado para agua dura.","descripcion_en":"MULTIDRIVE with double sheathed resistance, tank protected against limescale. Installation included, plus VAT. Recommended for hard water."}
+];
 
 function agregarMensajeUsuario(texto){
     const div = document.createElement('div'); div.classList.add('user'); div.textContent = texto;
@@ -156,26 +75,34 @@ function agregarMensajeBot(texto){
     document.getElementById('messages').scrollTop=document.getElementById('messages').scrollHeight;
 }
 
+function mostrarTermos(mensaje){
+    const inputLitros = mensaje.match(/(\d+)\s*(l|lt|litros)/i);
+    const lang = mensaje.toLowerCase().includes('english') ? 'en' : 'es';
+    const litrosFiltro = inputLitros ? parseInt(inputLitros[1]) : null;
+    let html = '';
+    termos.forEach(t=>{
+        const capacidadesFiltradas = litrosFiltro ? t.capacidades.filter(c=>c.litros===litrosFiltro) : t.capacidades;
+        capacidadesFiltradas.forEach(c=>{
+            html += `<div class="term-card"><a href="${t.link}" target="_blank">${t.nombre} - ${c.litros}L: ${c.precio}€</a><p>${lang==='es'?t.descripcion_es:t.descripcion_en}</p></div>`;
+        });
+    });
+    return html || (lang==='es'?'No hay termos disponibles para esa capacidad.':'No water heaters available for this capacity.');
+}
+
 document.getElementById('send-btn').addEventListener('click', ()=>{
-    const texto = document.getElementById('input').value.trim(); if(!texto) return;
+    const texto = document.getElementById('input').value.trim();
+    if(!texto) return;
     agregarMensajeUsuario(texto); document.getElementById('input').value='';
     let procesado=false;
-    const textoLower = texto.toLowerCase();
 
-    // Reconoce termos
-    if(textoLower.includes('termo')){
-        agregarMensajeBot(mostrarTermos(texto));
-        procesado=true;
-    }
-    // Reconoce fugas
-    else if(textoLower.includes('fuga') || textoLower.includes('pierde agua') || textoLower.includes('grifo')){
+    const mensajeLower = texto.toLowerCase();
+    if(mensajeLower.includes('termo')){ agregarMensajeBot(mostrarTermos(texto)); procesado=true;}
+    if(mensajeLower.includes('fuga') || mensajeLower.includes('pierde agua')){ 
         agregarMensajeBot('Las fugas pueden deberse a juntas deterioradas o presión excesiva. Envíame una foto por WhatsApp. Leaks may be due to worn gaskets or excessive pressure. Send a photo via WhatsApp.');
         procesado=true;
     }
-    // Preguntas generales
     if(!procesado){
-        let lang = textoLower.includes('english') ? 'en' : 'es';
-        agregarMensajeBot(lang==='es'?'No he entendido la consulta. Envíame una foto por WhatsApp.':'I didn\'t understand the query. Send me a photo via WhatsApp.');
+        agregarMensajeBot('No he entendido la consulta. Envíame una foto por WhatsApp. I didn\'t understand the query. Send me a photo via WhatsApp.');
     }
 });
 
