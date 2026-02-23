@@ -2,90 +2,50 @@
   "termos": [
     {
       "nombre": "SIMAT",
-      "foto": "SIMAT.jpg",
+      "link": "https://huevador.es/fontaneria-eduardo-quiroz",
       "capacidades": [
-        { "litros": 50, "precio": 195 },
-        { "litros": 80, "precio": 240 },
-        { "litros": 100, "precio": 280 }
+        {"litros": 50, "precio": 195},
+        {"litros": 80, "precio": 240},
+        {"litros": 100, "precio": 280}
       ],
-      "descripcion": "Termo eléctrico SIMAT económico y eficiente, calderín esmaltado con ánodo de magnesio, resistencia sumergida de 1200W. Ideal para viviendas pequeñas y medianas. Instalación realizada por fontanero en Torrevieja."
+      "descripcion_es": "Termo eléctrico SIMAT económico y eficiente, calderín esmaltado con ánodo de magnesio, resistencia sumergida de 1200W. Instalación incluida, más IVA.",
+      "descripcion_en": "SIMAT electric water heater, economical and efficient, enamel tank with magnesium anode, 1200W immersed resistance. Installation included, plus VAT."
     },
     {
       "nombre": "PRO R",
-      "foto": "PRO-R.jpg",
+      "link": "https://huevador.es/fontaneria-eduardo-quiroz",
       "capacidades": [
-        { "litros": 50, "precio": 260 },
-        { "litros": 80, "precio": 310 },
-        { "litros": 100, "precio": 360 }
+        {"litros": 50, "precio": 260},
+        {"litros": 80, "precio": 310},
+        {"litros": 100, "precio": 360}
       ],
-      "descripcion": "Termo eléctrico Ariston PRO R con resistencia blindada para durabilidad, tecnología WaterPlus para hasta 16% más de agua caliente disponible, calderín esmaltado con titanio, instalación por fontanero en Torrevieja."
-    },
-    {
-      "nombre": "LYDOS ECO",
-      "foto": "LYDOS-ECO.jpg",
-      "capacidades": [
-        { "litros": 50, "precio": 280 },
-        { "litros": 80, "precio": 330 },
-        { "litros": 100, "precio": 380 }
-      ],
-      "descripcion": "Termo eléctrico Ariston LYDOS ECO con resistencia blindada, tecnología WaterPlus para hasta 16% más de agua caliente, función ECO EVO para ahorro inteligente, calderín con titanio vitrificado, instalación por fontanero en Torrevieja."
-    },
-    {
-      "nombre": "LYDOS ECO Wi-Fi",
-      "foto": "LYDOS-ECO-WIFI.jpg",
-      "capacidades": [
-        { "litros": 50, "precio": 330 },
-        { "litros": 80, "precio": 380 },
-        { "litros": 100, "precio": 430 }
-      ],
-      "descripcion": "Termo eléctrico Ariston LYDOS ECO Wi-Fi con resistencia blindada, conectividad Wi-Fi, función ECO EVO, función T-Max, tecnología WaterPlus, calderín titanio vitrificado, instalación por fontanero en Torrevieja."
-    },
-    {
-      "nombre": "VELIS PRO Wi-Fi",
-      "foto": "VELIS-PRO-WIFI.jpg",
-      "capacidades": [
-        { "litros": 50, "precio": 420 },
-        { "litros": 80, "precio": 480 },
-        { "litros": 100, "precio": 540 }
-      ],
-      "descripcion": "Termo eléctrico Ariston VELIS PRO Wi-Fi con diseño plano, doble acumulador, resistencias alternas, conectividad Wi-Fi, función ECO EVO, Shower Ready, calderín con titanio, instalación por fontanero en Torrevieja."
+      "descripcion_es": "Termo eléctrico Ariston PRO R con resistencia blindada, tecnología WaterPlus, calderín esmaltado con titanio. Instalación incluida, más IVA.",
+      "descripcion_en": "Ariston PRO R electric water heater with armored resistance, WaterPlus technology, enamelled tank with titanium. Installation included, plus VAT."
     },
     {
       "nombre": "MULTIDRIVE",
-      "foto": "MULTIDRIVE.jpg",
+      "link": "https://huevador.es/fontaneria-eduardo-quiroz",
       "capacidades": [
-        { "litros": 50, "precio": 370 },
-        { "litros": 80, "precio": 430 },
-        { "litros": 100, "precio": 490 }
+        {"litros": 50, "precio": 370},
+        {"litros": 80, "precio": 430},
+        {"litros": 100, "precio": 490}
       ],
-      "descripcion": "Termo eléctrico Ariston PRO1 ECO Drive Multis con doble resistencia envainada, calderín protegido contra la cal, función ECO EVO, instalación por fontanero en Torrevieja."
-    },
-    {
-      "nombre": "HÍBRIDO Wi-Fi",
-      "foto": "HIBRIDO-WIFI.jpg",
-      "capacidades": [
-        { "litros": 80, "precio": 840 },
-        { "litros": 100, "precio": 950 }
-      ],
-      "descripcion": "Termo híbrido Wi-Fi con resistencia eléctrica de 1200W y aerotermia, modos i-Memory, Boost y Green, ahorro hasta 50%, instalación por fontanero en Torrevieja."
-    },
-    {
-      "nombre": "NUOS EVO A+",
-      "foto": "NUOS-EVO.jpg",
-      "capacidades": [
-        { "litros": 110, "precio": 1490 }
-      ],
-      "descripcion": "Termo NUOS EVO A+ con resistencia eléctrica y bomba de calor, modos inteligentes i-Memory y Green, máxima eficiencia Clase A, instalación por fontanero en Torrevieja."
-    },
-    {
-      "nombre": "VELIS Wi-Fi",
-      "foto": "VELIS-PRO-WIFI.jpg",
-      "capacidades": [
-        { "litros": 50, "precio": 420 },
-        { "litros": 80, "precio": 480 },
-        { "litros": 100, "precio": 540 }
-      ],
-      "descripcion": "Termo eléctrico Ariston Velis Wi-Fi con diseño plano, doble acumulador, resistencias alternas, conectividad Wi-Fi, función ECO EVO, Shower Ready, calderín con titanio, instalación por fontanero en Torrevieja."
+      "descripcion_es": "MULTIDRIVE con doble resistencia envainada, calderín protegido contra la cal. Instalación incluida, más IVA. Recomendado para agua dura.",
+      "descripcion_en": "MULTIDRIVE with double sheathed resistance, tank protected against lime. Installation included, plus VAT. Recommended for hard water."
     }
-  ]
+  ],
+  "palabras_clave": {
+    "fugas": ["fuga", "pierde agua", "goteo", "grifo"],
+    "termos": ["termo", "caldera", "eléctrico", "lt", "litros"]
+  },
+  "mensajes_genericos": {
+    "no_entendido": {
+      "es": "No he entendido la consulta. Envíame una foto por WhatsApp.",
+      "en": "I didn't understand the query. Send me a photo via WhatsApp."
+    },
+    "fugas": {
+      "es": "Las fugas pueden deberse a juntas deterioradas o presión excesiva. Envíame una foto por WhatsApp.",
+      "en": "Leaks may be due to worn gaskets or excessive pressure. Send a photo via WhatsApp."
+    }
+  }
 }
